@@ -1,0 +1,28 @@
+- hosts:
+    all
+  vars:
+    rpi_media_center_prereq_packages:
+      - apt-transport-https
+    raspotify_repo: "deb https://dtcooper.github.io/raspotify raspotify main"
+    raspotify_key: "https://dtcooper.github.io/raspotify/key.asc" 
+    raspotify_packages:
+      - raspotify
+  tasks:
+    - name: Installer les prerequis
+      apt: 
+        pkg: "{{ rpi_media_center_prereq_packages }}"
+        state: present
+
+    - name: Installer le repo de raspotify
+      apt_repository:
+        repo: "{{ raspotify_repo }}"
+        state: present
+
+    - name: Installer la clé du repo raspotify
+      apt_key:
+        url: "{{ raspotify_key }}"
+        state: present
+
+    - name: Installer raspotify
+      apt:
+        pkg: "{{ raspotify_packages }}"
