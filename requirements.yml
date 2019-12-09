@@ -1,0 +1,4 @@
+- name: ansible-kodi-raspbian
+  src: https://github.com/elfelip/ansible-kodi-raspbian.git
+  version: master
+  scm: git
