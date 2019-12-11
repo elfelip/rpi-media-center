@@ -1,12 +1,19 @@
 - hosts:
     all
   vars:
+    kodi_addons_directory: "<kodihomedir>/addons/"
     rpi_media_center_prereq_packages:
       - apt-transport-https
+      - inputstream-adaptive
+      - libwidevine
     raspotify_repo: "deb https://dtcooper.github.io/raspotify raspotify main"
     raspotify_key: "https://dtcooper.github.io/raspotify/key.asc" 
     raspotify_packages:
       - raspotify
+    netflix_repository_url: https://github.com/kodinerds/repo/raw/master/repository.netflix/repository.netflix-1.0.1.zip
+  roles:
+    - name: ansible-kodi-rasbpian
+      memory_split: 256
   tasks:
     - name: Installer les prerequis
       apt: 
@@ -26,3 +33,17 @@
     - name: Installer raspotify
       apt:
         pkg: "{{ raspotify_packages }}"
+
+    - name: Installer pycryptodomex pour le user pi pour Netflix.
+      pip:
+        name: pycryptodomex
+        extra_args: --user
+      become: False
+
+    - name: Télécharger le repository pour le add-on Netflix
+      unarchive:
+        src: "{{ netflix_repository_url }}"
+        dest: "{{ kodi_addons_directory }}"
+        remote_src: yes
+
+      
