@@ -1,11 +1,11 @@
 - hosts:
     all
   vars:
-    kodi_addons_directory: "/home/pi/addons/"
+    kodi_addons_directory: "/usr/share/kodi/addons/"
     rpi_media_center_prereq_packages:
       - apt-transport-https
-      - inputstream-adaptive
-      - libwidevine
+      - kodi-inputstream-adaptive
+#      - libwidevine
     raspotify_repo: "deb https://dtcooper.github.io/raspotify raspotify main"
     raspotify_key: "https://dtcooper.github.io/raspotify/key.asc" 
     raspotify_packages:
