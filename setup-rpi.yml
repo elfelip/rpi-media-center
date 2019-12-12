@@ -1,7 +1,7 @@
 - hosts:
     all
   vars:
-    kodi_addons_directory: "<kodihomedir>/addons/"
+    kodi_addons_directory: "/home/pi/addons/"
     rpi_media_center_prereq_packages:
       - apt-transport-https
       - inputstream-adaptive
@@ -12,7 +12,7 @@
       - raspotify
     netflix_repository_url: https://github.com/kodinerds/repo/raw/master/repository.netflix/repository.netflix-1.0.1.zip
   roles:
-    - name: ansible-kodi-rasbpian
+    - name: ansible-kodi-raspbian
       memory_split: 256
   tasks:
     - name: Installer les prerequis
