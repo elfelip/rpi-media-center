@@ -10,7 +10,7 @@
     raspotify_key: "https://dtcooper.github.io/raspotify/key.asc" 
     raspotify_packages:
       - raspotify
-    netflix_repository_url: https://github.com/kodinerds/repo/raw/master/repository.netflix/repository.netflix-1.0.1.zip
+    netflix_repository_url: https://github.com/castagnait/repository.castagnait/raw/master/repository.castagnait-1.0.0.zip
   roles:
     - name: ansible-kodi-raspbian
       memory_split: 256
